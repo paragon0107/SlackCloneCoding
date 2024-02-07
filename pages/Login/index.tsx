@@ -3,14 +3,14 @@ import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages
 //import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
-//import { Redirect } from 'react-router-dom';
-//import useSWR from 'swr';
+
+
 
 const LogIn = () => {
-    const {data,error} = useSWR("http://localhost:3095/api/Users",fetcher);   //url을 fetcher로 넘겨준다
+    const {data,error,revalidate}:any = useSWR("http://localhost:3095/api/users",fetcher,);   //url을 fetcher로 넘겨준다
     const [logInError, setLogInError] = useState(false);
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
@@ -26,6 +26,7 @@ const LogIn = () => {
               }
             )
             .then(() => {
+              revalidate();
                // mutate();
             })
             .catch((error) => {
@@ -36,6 +37,14 @@ const LogIn = () => {
       [email, password],
     );
 
+    if(data){
+      return (
+        <Routes>
+          <Route path="/workspace/channel"></Route>
+        </Routes>
+
+      )
+    }
 
 
     return (

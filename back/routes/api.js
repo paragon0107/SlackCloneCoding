@@ -41,6 +41,7 @@ router.post("/workspaces", isLoggedIn, async (req, res, next) => {
   const t = await sequelize.transaction();
   try {
     const exWorkspace = await Workspace.findOne({
+
       where: { url: req.body.url },
     });
     if (exWorkspace) {
