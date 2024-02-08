@@ -3,14 +3,15 @@ import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages
 //import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import {Link, Navigate, Route, Routes} from 'react-router-dom';
+import { Link, Navigate, redirect, Route, Routes } from 'react-router-dom';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 
 
 
 const LogIn = () => {
-    const {data,error,revalidate}:any = useSWR("http://localhost:3095/api/users",fetcher,);   //url을 fetcher로 넘겨준다
+
+  const {data,error,mutate}:any = useSWR("http://localhost:3095/api/users",fetcher,);   //url을 fetcher로 넘겨준다
     const [logInError, setLogInError] = useState(false);
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
@@ -25,9 +26,9 @@ const LogIn = () => {
                 withCredentials: true,    //서로 다른 포트를 가진 url간 쿠키 공유
               }
             )
-            .then(() => {
-                revalidate();
-               // mutate();
+            .then((response) => {
+              mutate(response.data,false);
+
             })
             .catch((error) => {
                 console.dir(error);
@@ -41,12 +42,16 @@ const LogIn = () => {
         return <div>로딩중...</div>;
     }
 
-    if(data){
-        console.log("!!!!!!!");
-      return(
-          <Navigate to="/workspace/channel"></Navigate>
-      )
-    }
+  if(data) {
+    console.log("go Work");
+    return (
+      <Routes>
+        <Route path="/" element={<Navigate replace to="/workspace/channel"/>}/>
+      </Routes>
+
+      //<Navigate to="/workspaces/channel"></Navigate>
+    )
+  }
 
 
     return (

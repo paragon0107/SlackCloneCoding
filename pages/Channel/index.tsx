@@ -1,13 +1,15 @@
 import React from 'react';
-import Workspace from '@layouts/Worlspace';
+import { Container, Header } from '@pages/Channel/styles';
 
 const Channel = ()=>{
-
+  console.log("Channel")
 
   return (
-  <Workspace>
-    <div>로그인 하신 것을 축하드려요!</div>
-  </Workspace>
+    <Container>
+      <Header>
+        채널!!~!!
+      </Header>
+    </Container>
   );
 };
 
