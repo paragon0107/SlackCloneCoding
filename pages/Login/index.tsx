@@ -3,7 +3,7 @@ import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages
 //import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import {Link, Navigate, Route, Routes} from 'react-router-dom';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 
@@ -26,7 +26,7 @@ const LogIn = () => {
               }
             )
             .then(() => {
-              revalidate();
+                revalidate();
                // mutate();
             })
             .catch((error) => {
@@ -37,12 +37,14 @@ const LogIn = () => {
       [email, password],
     );
 
-    if(data){
-      return (
-        <Routes>
-          <Route path="/workspace/channel"></Route>
-        </Routes>
+    if(data === undefined){
+        return <div>로딩중...</div>;
+    }
 
+    if(data){
+        console.log("!!!!!!!");
+      return(
+          <Navigate to="/workspace/channel"></Navigate>
       )
     }
 
