@@ -5,24 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc0e607b-82ac-4dbb-a16b-fda0539514dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Menu/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Menu/styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Modal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layouts/Workspace/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layouts/Workspace/styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Channel/styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/DirectMessage/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Modal/styles.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/typings/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/App/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/Worlspace.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Menu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/Workspace/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/Workspace/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Channel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Channel/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/SignUp/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -90,6 +83,7 @@
       <workItem from="1707235452327" duration="3084000" />
       <workItem from="1707271294729" duration="5108000" />
       <workItem from="1707369416761" duration="15369000" />
+      <workItem from="1707460055257" duration="6736000" />
     </task>
     <servers />
   </component>
