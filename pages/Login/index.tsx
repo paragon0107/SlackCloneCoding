@@ -1,6 +1,5 @@
 import useInput from '@hooks/useInput'
 import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages/SignUp/styles';
-//import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { Link, Navigate, redirect, Route, Routes } from 'react-router-dom';
@@ -45,11 +44,11 @@ const LogIn = () => {
   if(data) {
     console.log("go Work");
     return (
-      <Routes>
-        <Route path="/" element={<Navigate replace to="/workspace/channel"/>}/>
-      </Routes>
+      // <Routes>
+      //   <Route path="/" element={<Navigate replace to="/workspace/channel"/>}/>
+      // </Routes>
 
-      //<Navigate to="/workspaces/channel"></Navigate>
+      <Navigate to="/workspace/sleact/channel/일반"></Navigate>
     )
   }
 

@@ -53,8 +53,12 @@ const SignUp = () => {
         }
     },[email,nickname,password,password,mismatchError]);
 
+    if(data === undefined){
+        return <div>로딩중...</div>;
+    }
+
     if(data){
-        return (<Navigate to ="/login"></Navigate>)
+        return (<Navigate to ="/workspace/sleact/channel/일반"></Navigate>)
     }
 
     // const { data: userData } = useSWR('/api/users', fetcher);

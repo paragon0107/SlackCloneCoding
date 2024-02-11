@@ -1,6 +1,6 @@
 import fetcher from '@utils/fetcher';
 import axios from 'axios';
-import React, { FC, useCallback, useState } from 'react';
+import React, {FC, useCallback, useState, VFC} from 'react';
 import useSWR from 'swr';
 import { jsx } from '@emotion/react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
@@ -9,7 +9,7 @@ import {
   Channels, Chats,
   Header, LogOutButton, MenuScroll,
   ProfileImg, ProfileModal,
-  RightMenu, WorkspaceButton,
+  RightMenu, WorkspaceButton, WorkspaceModal,
   WorkspaceName,
   Workspaces,
   WorkspaceWrapper,
@@ -22,21 +22,21 @@ import useInput from '@hooks/useInput';
 import { Button, Input, Label } from '@pages/SignUp/styles';
 import Modal from '@components/Modal';
 import { toast } from 'react-toastify';
+import CreateChannelModal from "@components/CreateChannelModal";
 const Channel =loadable(()=> import('@pages/Channel'));
 const DirectMessage =loadable(()=> import('@pages/DirectMessage'));
 
 
-const Workspace = ({children}:any) =>{
+const Workspace = () =>{
   console.log("Workspace");
 
   const [showUserMenu,setShowUserMenu] = useState(false);
   const [showCreateWorkspaceModal,setShowCreateWorkspaceModal] = useState(false);
   const [newWorkspace,onChangeNewWorkspace, setNewWorkspace] = useInput("");
   const [newUrl,onChangeNewUrl, setNewUrl] = useInput("");
-
-  const {data:userData,error,mutate}:any = useSWR<IUser | false>("http://localhost:3095/api/users",fetcher,{
-    dedupingInterval:100000, //100초
-  });
+  const [ showWorkspaceModal, setShowWorkspaceModal] = useState(false);
+  const [ showCreateChannelModal, setShowCreateChannelModal] = useState(false);
+  const {data:userData,error,mutate}:any = useSWR<IUser | false>("http://localhost:3095/api/users",fetcher,);
 
   const onLogout = useCallback(()=> {
     axios.post('http://localhost:3095/api/users/logout',null, {
@@ -46,9 +46,12 @@ const Workspace = ({children}:any) =>{
         mutate(false );
       });
   },[]);
+  console.log(userData);
   if(!userData){
     return (<Navigate to ="/"></Navigate>)
   }
+
+  //훅은 리턴 있는 부분 밑에 선언
   const onCloseUserProfile = useCallback((e:any) => {
     e.stopPropagation();
     setShowUserMenu(false);
@@ -62,6 +65,7 @@ const Workspace = ({children}:any) =>{
   },[]);
   const onCloseModal = useCallback(()=>{
     setShowCreateWorkspaceModal(false);
+    setShowCreateChannelModal(false);
   },[]);
   const onCreateWorkspace = useCallback((e:any) => {
     e.preventDefault();
@@ -85,66 +89,86 @@ const Workspace = ({children}:any) =>{
         toast.error(error.response?.data,{ position: 'bottom-center'});
       });
   }, [newWorkspace, newUrl]);
-  return(
-    <div>
-      <Header>
-        <RightMenu>
+  const toggleWorkspaceModel = useCallback(() => {
+    setShowWorkspaceModal((prev) => !prev);
+  },[]);
+  const onClickAddChannel = useCallback(() => {
+    setShowCreateChannelModal(true);
+  },[]);
+  return (
+      <div>
+        <Header>
+          <RightMenu>
           <span onClick={onClickUserProfile}>
-              <ProfileImg src ={gravatar.url(userData.nickname,{s:'28px',d:'retro'})} alt={userData.nickname}/>
+              <ProfileImg src={gravatar.url(userData.nickname, {s: '28px', d: 'retro'})} alt={userData.nickname}/>
             {showUserMenu && (
-              <Menu style={{right:0,top:38}} show={showUserMenu} onCloseModal={onCloseUserProfile}>
-                <ProfileModal>
-                  <img src ={gravatar.url(userData.nickname,{s:'36px',d:'retro'})} alt={userData.nickname}/>
-                  <div>
-                    <span id="profile-name">{userData.nickname}</span>
-                    <span id="profile-active">Active</span>
-                  </div>
-                </ProfileModal>
-                <LogOutButton onClick={onLogout}>로그아웃</LogOutButton>
-              </Menu>
+                <Menu style={{right: 0, top: 38}} show={showUserMenu} onCloseModal={onCloseUserProfile}>
+                  <ProfileModal>
+                    <img src={gravatar.url(userData.nickname, {s: '36px', d: 'retro'})} alt={userData.nickname}/>
+                    <div>
+                      <span id="profile-name">{userData.nickname}</span>
+                      <span id="profile-active">Active</span>
+                    </div>
+                  </ProfileModal>
+                  <LogOutButton onClick={onLogout}>로그아웃</LogOutButton>
+                </Menu>
             )}
           </span>
-        </RightMenu>
-      </Header>
+          </RightMenu>
+        </Header>
 
-      <WorkspaceWrapper>
-        <Workspaces>
-          {userData?.Workspaces?.map((ws:IWorkspace)=>{
-            return(
-              <Link key={ws.id} to={`/workspace/${123}/channel/일반`}>
-                <WorkspaceButton>{ws.name.slice(0,1).toUpperCase()}</WorkspaceButton>
-              </Link>
-            );
-          })}
-          <AddButton onClick={onClickCreateWorkspace}>+</AddButton>
-        </Workspaces>
-      <Channels>
-        <WorkspaceName>Sleact</WorkspaceName>
-        <MenuScroll>MenuScroll</MenuScroll>
-      </Channels>
-      <Chats>
-        <Routes>
-          <Route path="/workspace/channel" Component={Channel}/>
-          <Route path="/workspace/dm" Component={DirectMessage}/>
-        </Routes>
-      </Chats>
-      </WorkspaceWrapper>
-      <Modal show ={showCreateWorkspaceModal} onCloseModal={onCloseModal}>
-        <form onSubmit={onCreateWorkspace}>
-          <Label id="workspace-label">
-            <span>워크스페이스 이름</span>
-            <Input id="workspace" value={newWorkspace} onChange={onChangeNewWorkspace}/>
-            {/*Input이 들어가는 경우 컴포넌트를 불리해라,리렌더링 너무 많이 발생함*/}
-          </Label>
-          <Label id="workspace-url-label">
-            <span>워크스페이스 url</span>
-            <Input id="workspace" value={newUrl} onChange={onChangeNewUrl} />
-          </Label>
-          <Button type="submit">생성하기</Button>
-        </form>
-      </Modal>
-    </div>
-  )
+        <WorkspaceWrapper>
+          <Workspaces>
+            {userData?.Workspaces?.map((ws: IWorkspace) => {
+              return (
+                  <Link key={ws.id} to={`/workspace/${123}/channel/일반`}>
+                    <WorkspaceButton>{ws.name.slice(0, 1).toUpperCase()}</WorkspaceButton>
+                  </Link>
+              );
+            })}
+            <AddButton onClick={onClickCreateWorkspace}>+</AddButton>
+          </Workspaces>
+          <Channels>
+            <WorkspaceName onClick={toggleWorkspaceModel}>Sleact</WorkspaceName>
+            <MenuScroll>
+              <Menu show={showWorkspaceModal} onCloseModal={toggleWorkspaceModel} style={{top: 95, left: 80}}>
+                <WorkspaceModal>
+                  <h2>Sleact</h2>
+                  <button onClick={onClickAddChannel}>채널 만들기</button>
+                  <button onClick={onLogout}>로그아웃</button>
+                </WorkspaceModal>
+              </Menu>
+            </MenuScroll>
+          </Channels>
+          <Chats>
+            <Routes>
+              {/*<Route path="/workspace/:workspace/channel/:channel" Component={Channel}/>*/}
+              {/*<Route path="/workspace/:workspace/dm/:id" Component={DirectMessage}/>*/}
+            </Routes>
+          </Chats>
+        </WorkspaceWrapper>
+        <Modal show={showCreateWorkspaceModal} onCloseModal={onCloseModal}>
+          <form onSubmit={onCreateWorkspace}>
+            <Label id="workspace-label">
+              <span>워크스페이스 이름</span>
+              <Input id="workspace" value={newWorkspace} onChange={onChangeNewWorkspace}/>
+              {/*Input이 들어가는 경우 컴포넌트를 불리해라,리렌더링 너무 많이 발생함 예시를 위해 만들어둠*/}
+            </Label>
+            <Label id="workspace-url-label">
+              <span>워크스페이스 url</span>
+              <Input id="workspace" value={newUrl} onChange={onChangeNewUrl}/>
+            </Label>
+            <Button type="submit">생성하기</Button>
+          </form>
+        </Modal>
+        {/*Input이 들어가서 따로 컴포넌트를 빼줌 이러면 유지보수 측면에서도 함수나 상태가 한눈에 보여 편함*/}
+        <CreateChannelModal
+            show={showCreateChannelModal}
+            onCloseModal={onCloseModal}
+            setShowCreateChannelModal={setShowCreateChannelModal}
+        />
+      </div>
+  );
 }
 
 
