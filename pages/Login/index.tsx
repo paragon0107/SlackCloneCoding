@@ -1,14 +1,14 @@
 import useInput from '@hooks/useInput'
 import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages/SignUp/styles';
 import axios from 'axios';
-import React, { useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Link, Navigate, redirect, Route, Routes } from 'react-router-dom';
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 
 
 
-const LogIn = () => {
+const LogIn:FC = () => {
 
   const {data,error,mutate}:any = useSWR("http://localhost:3095/api/users",fetcher,);   //url을 fetcher로 넘겨준다
     const [logInError, setLogInError] = useState(false);

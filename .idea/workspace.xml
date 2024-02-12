@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc0e607b-82ac-4dbb-a16b-fda0539514dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Modal/styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/typings/db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/InviteChannelModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/InviteWorkspaceModal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Menu/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CreateChannelModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateChannelModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/App/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/Workspace/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/Workspace/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Login/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -45,23 +41,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zzan9/Desktop/GithubProject/slackCloneCoding&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\zzan9\\Desktop\\GithubProject\\slackCloneCoding\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/zzan9/Desktop/GithubProject/Eung-aeProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\zzan9\\Desktop\\GithubProject\\slackCloneCoding\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\zzan9\Desktop\GithubProject\slackCloneCoding" />
@@ -83,11 +79,25 @@
       <workItem from="1707235452327" duration="3084000" />
       <workItem from="1707271294729" duration="5108000" />
       <workItem from="1707369416761" duration="15369000" />
-      <workItem from="1707460055257" duration="6736000" />
+      <workItem from="1707460055257" duration="6966000" />
+      <workItem from="1707656829618" duration="3747000" />
+      <workItem from="1707703017641" duration="14656000" />
+      <workItem from="1707733883763" duration="15000" />
+      <workItem from="1707734269191" duration="1304000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/pages/Channel/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

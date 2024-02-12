@@ -11,10 +11,10 @@ const App = () =>{
     console.log("App");
     return (
     <Routes> //Route 로 되어있는 페이지로 보내준다.
-        <Route path='/' element={<Navigate to="/login" />}/> // /인경우에는 그냥 로그인 페이지로
-        <Route path = '/login' Component={LogIn}/>
-        <Route path = '/signUp' Component={SignUp}/>
-        <Route path = '/workspace/:workspace/' Component={Workspace}/>
+        <Route path='/' element={<LogIn/>}/> // /인경우에는 그냥 로그인 페이지로
+        <Route path = '/login' element={<LogIn/>}/>
+        <Route path = '/signUp' element={<SignUp/>}/>
+        <Route path = '/workspace/:workspace/*' element={<Workspace/>}/>
     </Routes>
     );
 }
